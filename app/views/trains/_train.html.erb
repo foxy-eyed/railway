@@ -1,0 +1,20 @@
+<tr>
+  <td><%= train.number %></td>
+  <td>
+    <% if train.route.present? %>
+        <%= link_to train.route.name, train.route %>
+    <% else %>
+        not set
+    <% end %>
+  </td>
+  <td>
+    <% if train.current_station.present? %>
+        <%= link_to train.current_station.title, train.current_station %>
+    <% else %>
+        not set
+    <% end %>
+  </td>
+  <td><%= link_to 'Show', train %></td>
+  <td><%= link_to 'Edit', edit_train_path(train) %></td>
+  <td><%= link_to 'Destroy', train, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+</tr>
