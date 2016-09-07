@@ -4,7 +4,41 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
+  margin: 0 0 60px 0;
+}
+
+nav {
+  background: #f5f5f5;
+  display: block;
+  margin-bottom: 20px;
+  min-height: 50px;
+
+  .project-name {
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 15px 0;
+    text-decoration: none;
+
+    &:visited, &:hover {
+      color: #333;
+      background: transparent;
+    }
+  }
+}
+
+footer {
+  background: #f5f5f5;
+  bottom: 0;
+  height: 60px;
+  position: absolute;
+  width: 100%;
+
+  .copyright {
+    line-height: 20px;
+    margin: 20px 0;
+  }
 }
 
 p, ol, ul, td {
@@ -34,19 +68,23 @@ a {
 }
 
 th {
-  padding-bottom: 5px;
+  text-align: left;
 }
 
-td {
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
+th, td {
+  padding: 5px 10px;
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 1170px;
 }
 
 #notice {

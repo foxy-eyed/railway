@@ -1,8 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Route</h1>
+
 <p>
   <strong>Name:</strong>
   <%= @route.name %>
+</p>
+
+<p>
+  <strong>Railway stations:</strong>
+  <%= render 'common/list', list: @route.railway_stations, attr: :title, empty_text: 'no stations in route' %>
+</p>
+
+<p>
+  <strong>Trains on Route:</strong>
+  <%= render 'common/list', list: @route.trains, attr: :number, empty_text: 'no trains on route' %>
 </p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
