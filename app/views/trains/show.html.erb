@@ -8,12 +8,28 @@
 </p>
 
 <p>
-  <strong>Route</strong>
+  <strong>Route:</strong>
   <% if @train.route.present? %>
       <%= link_to @train.route.name, @train.route %>
   <% else %>
       not set
   <% end %>
+</p>
+
+<p>
+  <strong>Wagons and Places count by Category:</strong>
+  <ul>
+    <% @train.capacity_by_categories.each do |key, row| %>
+        <li>
+          <strong><%= "#{Wagon::CATEGORIES[key]}: " %></strong>
+          <ul>
+            <li><%= "wagons - #{row[:wagons]}, " %></li>
+            <li><%= "top places - #{row[:top_places]}, " %></li>
+            <li><%= "bottom places - #{row[:bottom_places]}" %></li>
+          </ul>
+        </li>
+    <% end %>
+  </ul>
 </p>
 
 <p>

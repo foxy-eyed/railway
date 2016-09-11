@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wagon</h1>
+
+<p>
+  <strong>Train Number:</strong>
+  <%= @wagon.train.number %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @wagon.category_label %>
+</p>
+
+<p>
+  <strong>Places:</strong>
+  <ul>
+    <li>Top&nbsp;&mdash; <%= @wagon.top_places  %></li>
+    <li>Bottom&nbsp;&mdash; <%= @wagon.bottom_places  %></li>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_wagon_path(@wagon) %> |
+<%= link_to 'Back', wagons_path %>
