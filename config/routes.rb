@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :railway_stations
-  resources :routes
+  resources :routes do
+    patch :update_station_position, on: :member
+  end
   resources :trains
   resources :wagons
 
