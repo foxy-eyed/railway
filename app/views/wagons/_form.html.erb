@@ -1,5 +1,12 @@
-<%= form_for(wagon) do |f| %>
+<%= form_for(wagon.becomes(Wagon)) do |f| %>
     <%= render 'common/errors', resource: wagon %>
+
+    <% f.object = wagon.becomes(wagon.class) %>
+
+    <div class="field">
+      <%= f.label :type %>
+      <%= f.select :type, Wagon.types %>
+    </div>
 
     <div class="field">
       <%= f.label :train_id %>
@@ -7,8 +14,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :category %>
-      <%= f.select :category, Wagon.categories %>
+      <%= f.label :number %>
+      <%= f.text_field :number %>
     </div>
 
     <div class="field">

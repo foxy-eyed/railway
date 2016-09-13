@@ -13,7 +13,8 @@ class WagonsController < ApplicationController
   end
 
   def create
-    @wagon = Wagon.new(wagon_params)
+    wagon_class = params[:wagon][:type].constantize
+    @wagon = wagon_class.new(wagon_params(wagon_class))
 
     if @wagon.save
       redirect_to @wagon, notice: 'Wagon was successfully created.'
@@ -26,7 +27,7 @@ class WagonsController < ApplicationController
   end
 
   def update
-    if @wagon.update(wagon_params)
+    if @wagon.update(wagon_params(@wagon.class))
       redirect_to @wagon, notice: 'Wagon was successfully updated.'
     else
       render :edit
@@ -40,8 +41,8 @@ class WagonsController < ApplicationController
 
   private
 
-  def wagon_params
-    params.require(:wagon).permit(:category, :top_places, :bottom_places, :train_id)
+  def wagon_params(wagon_class)
+    params.require(:wagon).permit(wagon_class.permitted_params)
   end
 
   def set_wagon
