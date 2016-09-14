@@ -9,4 +9,8 @@ class Train < ApplicationRecord
   def capacity_by_type(wagon_type, place_type)
     Wagon.where(type: wagon_type, train: self).sum(place_type) || 0
   end
+
+  def ordered_wagons
+    self.order_from_tail ? wagons.ordered.reverse_order : wagons.ordered
+  end
 end

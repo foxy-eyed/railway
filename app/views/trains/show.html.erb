@@ -36,7 +36,7 @@
     </tr>
     </thead>
     <tbody>
-    <% @train.wagons.ordered.each do |wagon| %>
+    <% @train.ordered_wagons.each do |wagon| %>
         <tr>
           <td><%= link_to wagon.number, wagon_path(wagon) %></td>
           <td><%= wagon.type_label %></td>
