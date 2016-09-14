@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy, :update_station_position]
+  before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
     @routes = Route.all
@@ -38,24 +38,10 @@ class RoutesController < ApplicationController
     redirect_to routes_path, notice: 'Route was successfully deleted.'
   end
 
-  def update_station_position
-    @railway_stations_route = RailwayStationsRoute.find(stations_route_params[:id])
-
-    if @railway_stations_route.update(stations_route_params)
-      redirect_to @route, notice: 'Stations in route was successfully reordered.'
-    else
-      render :show
-    end
-  end
-
   private
 
   def route_params
     params.require(:route).permit(:name, railway_station_ids: [])
-  end
-
-  def stations_route_params
-    params.require(:railway_stations_route).permit(:position, :id)
   end
 
   def set_route

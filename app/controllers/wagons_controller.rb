@@ -13,13 +13,16 @@ class WagonsController < ApplicationController
   end
 
   def create
-    wagon_class = params[:wagon][:type].constantize
-    @wagon = wagon_class.new(wagon_params(wagon_class))
-
-    if @wagon.save
-      redirect_to wagon_path(@wagon), notice: 'Wagon was successfully created.'
+    if Wagon::TYPES.key?(params[:wagon][:type])
+      wagon_class = params[:wagon][:type].constantize
+      @wagon = wagon_class.new(wagon_params(wagon_class))
+      if @wagon.save
+        redirect_to wagon_path(@wagon), notice: 'Wagon was successfully created.'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_wagon_path, alert: 'Unknown type of Wagon'
     end
   end
 
@@ -28,7 +31,7 @@ class WagonsController < ApplicationController
 
   def update
     if @wagon.update(wagon_params(@wagon.class))
-      redirect_to @wagon, notice: 'Wagon was successfully updated.'
+      redirect_to wagon_path(@wagon), notice: 'Wagon was successfully updated.'
     else
       render :edit
     end

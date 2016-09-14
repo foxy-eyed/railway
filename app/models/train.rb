@@ -7,7 +7,7 @@ class Train < ApplicationRecord
   validates :number, presence: true
 
   def capacity_by_type(wagon_type, place_type)
-    Wagon.where(type: wagon_type, train: self).sum(place_type) || 0
+    wagons.where(type: wagon_type).sum(place_type) || 0
   end
 
   def ordered_wagons

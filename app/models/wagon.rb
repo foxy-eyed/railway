@@ -9,9 +9,7 @@ class Wagon < ApplicationRecord
   validates :number, numericality: { only_integer: true, greater_than: 0 }
   validates :number, uniqueness: { scope: :train_id }
 
-  before_validation do
-    set_number if new_record?
-  end
+  before_validation :set_number, on: :create
 
   scope :ordered, -> { order(:number) }
   scope :ordered_by_train, -> { joins(:train).order('trains.number, wagons.number') }
@@ -31,7 +29,7 @@ class Wagon < ApplicationRecord
   protected
 
   def set_number
-    max_number = Wagon.where(train_id: train_id).maximum(:number) || 0
+    max_number = train.wagons.maximum(:number) || 0
     self.number = max_number + 1
   end
 end
