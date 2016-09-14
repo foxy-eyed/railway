@@ -5,10 +5,10 @@ class RailwayStation < ApplicationRecord
   has_many :railway_stations_routes
   has_many :routes, through: :railway_stations_routes
 
+  validates :title, presence: true
+
   scope :ordered, -> { joins(:railway_stations_routes).uniq.order('railway_stations_routes.position') }
   scope :ordered_by_title, -> { order(:title) }
-
-  validates :title, presence: true
 
   def route_assignment(route)
     RailwayStationsRoute.find_by(route: route, railway_station: self)

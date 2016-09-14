@@ -12,7 +12,9 @@
   </thead>
 
   <tbody>
-  <%= render @wagons.ordered_by_train %>
+  <% @wagons.ordered_by_train.each do |wagon| %>
+    <%= render 'wagon', wagon: wagon %>
+  <% end %>
   </tbody>
 </table>
 

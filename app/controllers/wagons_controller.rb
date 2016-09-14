@@ -17,7 +17,7 @@ class WagonsController < ApplicationController
     @wagon = wagon_class.new(wagon_params(wagon_class))
 
     if @wagon.save
-      redirect_to @wagon, notice: 'Wagon was successfully created.'
+      redirect_to wagon_path(@wagon), notice: 'Wagon was successfully created.'
     else
       render :new
     end

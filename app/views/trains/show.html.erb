@@ -8,6 +8,15 @@
 </p>
 
 <p>
+  <strong>Current station:</strong>
+  <% if @train.current_station.present? %>
+      <%= link_to @train.current_station.title, @train.current_station %>
+  <% else %>
+      not set
+  <% end %>
+</p>
+
+<p>
   <strong>Route:</strong>
   <% if @train.route.present? %>
       <%= link_to @train.route.name, @train.route %>
@@ -16,30 +25,52 @@
   <% end %>
 </p>
 
-<p>
-  <strong>Wagons and Places count by Category:</strong>
-  <ul>
-    <% @train.capacity_by_categories.each do |key, row| %>
-        <li>
-          <strong><%= "#{Wagon::CATEGORIES[key]}: " %></strong>
-          <ul>
-            <li><%= "wagons - #{row[:wagons]}, " %></li>
-            <li><%= "top places - #{row[:top_places]}, " %></li>
-            <li><%= "bottom places - #{row[:bottom_places]}" %></li>
-          </ul>
-        </li>
+<h2>Wagons:</h2>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Places</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @train.wagons.ordered.each do |wagon| %>
+        <tr>
+          <td><%= link_to wagon.number, wagon_path(wagon) %></td>
+          <td><%= wagon.type_label %></td>
+          <td><%= render "wagons/places_#{wagon.type.underscore}", wagon: wagon %></td>
+        </tr>
     <% end %>
-  </ul>
-</p>
+    </tbody>
+  </table>
+</div>
 
-<p>
-  <strong>Current station:</strong>
-  <% if @train.current_station.present? %>
-      <%= link_to @train.current_station.title, @train.current_station %>
-  <% else %>
-      not set
-  <% end %>
-</p>
+<h2>Places count by type:</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Wagon type</th>
+    <th>Place type</th>
+    <th>Count</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% Wagon::TYPES.each do |wagon_type, wagon_label| %>
+      <% Wagon::PLACE_TYPES.each do |place_type, place_label| %>
+          <% count = @train.capacity_by_type(wagon_type, place_type) %>
+          <% if count > 0 %>
+            <tr>
+              <td><%= wagon_label %></td>
+              <td><%= place_label %></td>
+              <td><%= count %></td>
+            </tr>
+          <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
