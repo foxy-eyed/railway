@@ -45,6 +45,16 @@ class RailwayStationsController < ApplicationController
     redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
+  def update_position
+    @railway_stations_route = RailwayStationsRoute.find(stations_route_params[:id])
+
+    if @railway_stations_route.update(stations_route_params)
+      redirect_to @railway_stations_route.route, notice: 'Stations in route was successfully reordered.'
+    else
+      redirect_to @railway_stations_route.route, alert: 'Stations in route was not reordered.'
+    end
+  end
+
   private
 
   def set_railway_station
@@ -54,4 +64,9 @@ class RailwayStationsController < ApplicationController
   def railway_station_params
     params.require(:railway_station).permit(:title)
   end
+
+  def stations_route_params
+    params.require(:railway_stations_route).permit(:position, :id)
+  end
+
 end

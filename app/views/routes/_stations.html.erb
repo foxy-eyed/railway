@@ -1,0 +1,23 @@
+<table>
+  <thead>
+  <tr>
+    <th>Station</th>
+    <th>Position</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% stations.each do |station| %>
+      <tr>
+        <td><%= link_to station.title, station %></td>
+        <td>
+          <%= form_for(station.route_assignment(@route.id), method: :patch,
+                       url: {controller: 'railway_stations', action: 'update_position'}) do |f| %>
+              <%= f.hidden_field :id %>
+              <%= f.text_field :position %>
+              <%= f.submit 'update' %>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

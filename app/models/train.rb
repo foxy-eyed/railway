@@ -6,15 +6,11 @@ class Train < ApplicationRecord
 
   validates :number, presence: true
 
-  def capacity_by_categories
-    capacity = {}
-    Wagon::CATEGORIES.each_key { |key| capacity[key] = { wagons: 0, top_places: 0, bottom_places: 0 } }
-    wagons.each do |wagon|
-      category = wagon.category.to_sym
-      capacity[category][:wagons] += 1
-      capacity[category][:top_places] += wagon.top_places
-      capacity[category][:bottom_places] += wagon.bottom_places
-    end
-    capacity
+  def capacity_by_type(wagon_type, place_type)
+    wagons.where(type: wagon_type).sum(place_type) || 0
+  end
+
+  def ordered_wagons
+    self.order_from_tail ? wagons.ordered.reverse_order : wagons.ordered
   end
 end

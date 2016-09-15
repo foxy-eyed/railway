@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912114554) do
+ActiveRecord::Schema.define(version: 20160914111245) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20160912114554) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "railway_stations_routes", id: false, force: :cascade do |t|
-    t.integer "railway_station_id", null: false
-    t.integer "route_id",           null: false
+  create_table "railway_stations_routes", force: :cascade do |t|
+    t.integer "railway_station_id",             null: false
+    t.integer "route_id",                       null: false
+    t.integer "position",           default: 0
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -47,10 +48,11 @@ ActiveRecord::Schema.define(version: 20160912114554) do
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "route_id"
     t.integer  "current_station_id"
+    t.boolean  "order_from_tail",    default: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
@@ -63,12 +65,16 @@ ActiveRecord::Schema.define(version: 20160912114554) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.string   "category"
-    t.integer  "top_places",    default: 0
-    t.integer  "bottom_places", default: 0
+    t.string   "type"
+    t.integer  "top_places",         default: 0
+    t.integer  "bottom_places",      default: 0
     t.integer  "train_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "side_top_places",    default: 0
+    t.integer  "side_bottom_places", default: 0
+    t.integer  "seats",              default: 0
+    t.integer  "number"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 
