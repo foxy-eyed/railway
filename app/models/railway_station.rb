@@ -10,7 +10,18 @@ class RailwayStation < ApplicationRecord
   scope :ordered, -> { joins(:railway_stations_routes).uniq.order('railway_stations_routes.position') }
   scope :ordered_by_title, -> { order(:title) }
 
+  def position_in(route)
+    route_assignment(route).try(:position)
+  end
+
+  def update_position(route, position)
+    route_assignment = route_assignment(route)
+    route_assignment && route_assignment.update(position: position)
+  end
+
+  protected
+
   def route_assignment(route)
-    RailwayStationsRoute.find_by(route: route, railway_station: self)
+    @route_assignment ||= railway_stations_routes.find_by(route: route)
   end
 end

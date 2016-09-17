@@ -10,11 +10,10 @@
       <tr>
         <td><%= link_to station.title, station %></td>
         <td>
-          <%= form_for(station.route_assignment(@route.id), method: :patch,
-                       url: {controller: 'railway_stations', action: 'update_position'}) do |f| %>
-              <%= f.hidden_field :id %>
-              <%= f.text_field :position %>
-              <%= f.submit 'update' %>
+          <%= form_tag(update_position_railway_station_path(station), method: :patch) do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= submit_tag 'update' %>
           <% end %>
         </td>
       </tr>

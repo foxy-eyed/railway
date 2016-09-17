@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   # GET /railway_stations
   def index
@@ -46,12 +46,11 @@ class RailwayStationsController < ApplicationController
   end
 
   def update_position
-    @railway_stations_route = RailwayStationsRoute.find(stations_route_params[:id])
-
-    if @railway_stations_route.update(stations_route_params)
-      redirect_to @railway_stations_route.route, notice: 'Stations in route was successfully reordered.'
+    @route = Route.find(params[:route_id])
+    if @railway_station.update_position(@route, params[:position])
+      redirect_to @route, notice: 'Stations in route was successfully reordered.'
     else
-      redirect_to @railway_stations_route.route, alert: 'Stations in route was not reordered.'
+      redirect_to @route, alert: 'Stations in route was not reordered.'
     end
   end
 
@@ -64,9 +63,4 @@ class RailwayStationsController < ApplicationController
   def railway_station_params
     params.require(:railway_station).permit(:title)
   end
-
-  def stations_route_params
-    params.require(:railway_stations_route).permit(:position, :id)
-  end
-
 end
