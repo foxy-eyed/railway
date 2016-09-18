@@ -10,9 +10,11 @@
       <tr>
         <td><%= link_to station.title, station %></td>
         <td>
-          <%= form_tag(update_position_railway_station_path(station), method: :patch) do %>
+          <%= form_tag(update_within_route_railway_station_path(station), method: :patch) do %>
               <%= hidden_field_tag :route_id, @route.id %>
-              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= number_field_tag :position, station.within_route(@route, :position) %>
+              <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time), placeholder: 'arrival time' %>
+              <%= time_field_tag :departure_time, station.within_route(@route, :departure_time), placeholder: 'departure time' %>
               <%= submit_tag 'update' %>
           <% end %>
         </td>

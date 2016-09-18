@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resource :search, only: [:show]
 
   resources :railway_stations do
-    patch :update_position, on: :member
+    patch :update_within_route, on: :member
   end
   resources :routes
   resources :trains do
