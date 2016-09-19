@@ -1,0 +1,46 @@
+<h1>Buy a Ticket</h1>
+
+<h2>Information:</h2>
+<table>
+  <tbody>
+  <tr>
+    <th>Train Number:</th>
+    <td><%= @ticket.train.number %></td>
+  </tr>
+  <tr>
+    <th>Route:</th>
+    <td><%= @ticket.train.route.name %></td>
+  </tr>
+  <tr>
+    <th>Departing point:</th>
+    <td><%= @ticket.start_station.title %></td>
+  </tr>
+  <tr>
+    <th>Destination point:</th>
+    <td><%= @ticket.end_station.title %></td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Passenger data:</h2>
+<div>
+  <%= form_for(@ticket) do |f| %>
+      <%= f.hidden_field :train_id %>
+      <%= f.hidden_field :start_station_id %>
+      <%= f.hidden_field :end_station_id %>
+
+      <div class="field">
+        <%= f.label :passenger_name %>
+        <%= f.text_field :passenger_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :passport_number %>
+        <%= f.text_field :passport_number %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end%>
+</div>
