@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resource :search, only: [:show]
+  resource :search, only: [:show, :create]
 
   resources :railway_stations do
     patch :update_within_route, on: :member

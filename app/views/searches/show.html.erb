@@ -1,1 +1,41 @@
 <h1>Search tickets</h1>
+
+<%= form_for(@search, method: :post, url: search_path) do |f| %>
+
+    <div class="field">
+      <%= label_tag 'Departing point' %>
+      <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
+    </div>
+
+    <div class="field">
+      <%= label_tag 'Destination point' %>
+      <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag 'Search' %>
+    </div>
+<% end %>
+
+<% if @search.result %>
+  <% if @search.result.empty? %>
+      <p>Search result is empty</p>
+  <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Train</th>
+            <th>Route</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @search.result.each do |train| %>
+            <tr>
+              <td><%= train.number %></td>
+              <td><%= train.route.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% end %>
+<% end %>
