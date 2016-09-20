@@ -5,6 +5,8 @@ class Ticket < ApplicationRecord
   belongs_to :user
 
   validates :serial_number, :passenger_name, :passport_number, presence: true
+  validates :passenger_name, length: { minimum: 3, maximum: 50 }
+  validates :passport_number, format: {with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/}
 
   before_validation :gen_serial_number, on: :create
   before_validation :set_user, on: :create
@@ -12,10 +14,11 @@ class Ticket < ApplicationRecord
   private
 
   def gen_serial_number
-    @serial_number = rand(9**10).to_s
+    self.serial_number = rand(9**10).to_s
   end
 
+  # небольшой костыль, пока нет аутентификации
   def set_user
-    @user_id = User.first.id
+    self.user_id = User.first.id
   end
 end

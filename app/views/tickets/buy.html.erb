@@ -24,6 +24,7 @@
 
 <h2>Passenger data:</h2>
 <div>
+  <%= render 'common/errors', resource: @ticket %>
   <%= form_for(@ticket) do |f| %>
       <%= f.hidden_field :train_id %>
       <%= f.hidden_field :start_station_id %>
@@ -42,5 +43,5 @@
       <div class="actions">
         <%= f.submit %>
       </div>
-  <% end%>
+  <% end %>
 </div>

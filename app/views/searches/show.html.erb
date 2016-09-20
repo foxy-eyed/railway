@@ -1,7 +1,7 @@
 <h1>Search tickets</h1>
 
 <%= form_for(@search, method: :post, url: search_path) do |f| %>
-
+    <%= render 'common/errors', resource: @search %>
     <div class="field">
       <%= label_tag 'Departing point' %>
       <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title %>

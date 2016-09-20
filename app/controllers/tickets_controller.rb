@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   def show
+    @ticket = Ticket.find(params[:id])
   end
 
   def buy
@@ -12,7 +13,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to root_path
+      redirect_to @ticket, notice: 'Thank you for your order!'
     else
       render :buy
     end
