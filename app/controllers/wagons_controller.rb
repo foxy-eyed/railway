@@ -1,8 +1,9 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:index, :new, :create]
 
   def index
-    @wagons = Wagon.all
+    redirect_to @train
   end
 
   def show
@@ -13,16 +14,17 @@ class WagonsController < ApplicationController
   end
 
   def create
-    if Wagon::TYPES.key?(params[:wagon][:type])
+    if Wagon::TYPES.key?(params[:wagon][:type].to_sym)
       wagon_class = params[:wagon][:type].constantize
       @wagon = wagon_class.new(wagon_params(wagon_class))
+      @wagon.train = @train
       if @wagon.save
-        redirect_to wagon_path(@wagon), notice: 'Wagon was successfully created.'
+        redirect_to @train, notice: 'Wagon was successfully created.'
       else
         render :new
       end
     else
-      redirect_to new_wagon_path, alert: 'Unknown type of Wagon'
+      redirect_to new_train_wagon_path, alert: 'Unknown type of Wagon'
     end
   end
 
@@ -38,8 +40,9 @@ class WagonsController < ApplicationController
   end
 
   def destroy
+    train = @wagon.train
     @wagon.destroy
-    redirect_to wagons_path, notice: 'Wagon was successfully deleted.'
+    redirect_to train, notice: 'Wagon was successfully deleted.'
   end
 
   private
@@ -50,5 +53,9 @@ class WagonsController < ApplicationController
 
   def set_wagon
     @wagon = Wagon.find(params[:id])
+  end
+
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 end

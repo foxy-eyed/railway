@@ -27,12 +27,14 @@
 
 <h2>Wagons:</h2>
 <div>
+  <span><%= link_to '+ Add wagon', new_train_wagon_path(@train) %></p></span>
   <table>
     <thead>
     <tr>
       <th>Number</th>
       <th>Type</th>
       <th>Places</th>
+      <th colspan="3"></th>
     </tr>
     </thead>
     <tbody>
@@ -41,6 +43,9 @@
           <td><%= link_to wagon.number, wagon_path(wagon) %></td>
           <td><%= wagon.type_label %></td>
           <td><%= render "wagons/places_#{wagon.type.underscore}", wagon: wagon %></td>
+          <td><%= link_to 'Show', wagon_path(wagon) %></td>
+          <td><%= link_to 'Edit', edit_wagon_path(wagon) %></td>
+          <td><%= link_to 'Destroy', wagon_path(wagon), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
     </tbody>
