@@ -19,6 +19,6 @@ class Ticket < ApplicationRecord
 
   # небольшой костыль, пока нет аутентификации
   def set_user
-    self.user_id = User.first.id
+    self.user = User.first
   end
 end

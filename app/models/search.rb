@@ -8,11 +8,11 @@ class Search
   validate :stations_differ
 
   def start_station
-    RailwayStation.find(start_station_id)
+    @start_station ||= RailwayStation.find(start_station_id)
   end
 
   def end_station
-    RailwayStation.find(end_station_id)
+    @end_station ||= RailwayStation.find(end_station_id)
   end
 
   def run
