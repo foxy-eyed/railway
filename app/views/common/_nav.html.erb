@@ -1,5 +1,14 @@
 <nav>
   <div class="container">
     <%= link_to 'Railway', root_path, class: 'project-name' %>
+
+    <div class="auth-links">
+      <% if user_signed_in? %>
+          <span><%= "#{current_user.first_name} #{current_user.last_name}" %></span>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      <% else %>
+          <%= link_to 'Log in', new_user_session_path %>
+      <% end %>
+    </div>
   </div>
 </nav>
