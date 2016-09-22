@@ -9,16 +9,10 @@ class Ticket < ApplicationRecord
   validates :passport_number, format: {with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/}
 
   before_validation :gen_serial_number, on: :create
-  before_validation :set_user, on: :create
 
   private
 
   def gen_serial_number
     self.serial_number = rand(9**10).to_s
-  end
-
-  # небольшой костыль, пока нет аутентификации
-  def set_user
-    self.user = User.first
   end
 end

@@ -1,0 +1,24 @@
+<h1>Railway Station</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @railway_station.title %>
+</p>
+
+<p>
+  <strong>Trains on Station:</strong>
+  <% if @railway_station.trains.present? %>
+    <ul>
+      <% @railway_station.trains.each do |train| %>
+          <li>
+            <%= link_to train.number, admin_train_path(train) %>
+          </li>
+      <% end %>
+    </ul>
+  <% else %>
+    no trains on station
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to 'Back', admin_railway_stations_path %>

@@ -1,0 +1,24 @@
+<h1>Route "<%= @route.name %>"</h1>
+
+<h2>Railway stations:</h2>
+<div>
+  <%= render 'stations', stations: @route.railway_stations.ordered %>
+</div>
+
+<h2>Trains on Route:</h2>
+<div>
+  <% if @route.trains.present? %>
+      <ul>
+        <% @route.trains.each do |train| %>
+            <li>
+              <%= link_to train.number, admin_train_path(train) %>
+            </li>
+        <% end %>
+      </ul>
+  <% else %>
+      no trains on route
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>

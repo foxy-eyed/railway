@@ -7,17 +7,21 @@ Rails.application.routes.draw do
 
   resource :search, only: [:show, :create]
 
-  resources :railway_stations do
-    patch :update_within_route, on: :member
-  end
-
-  resources :routes
-
   resources :tickets, only: [:show, :create] do
     post :buy, on: :collection
   end
 
-  resources :trains do
-    resources :wagons, shallow: true
+  namespace :admin do
+    resources :railway_stations do
+      patch :update_within_route, on: :member
+    end
+
+    resources :routes
+
+    resources :tickets
+
+    resources :trains do
+      resources :wagons, shallow: true
+    end
   end
 end
