@@ -1,0 +1,22 @@
+<h1>Tickets</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Ticket number</th>
+    <th>Train</th>
+    <th>Route</th>
+    <th>Departing point</th>
+    <th>Destination point</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @tickets %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= link_to 'Back', root_path %>

@@ -1,6 +1,7 @@
-<h1>Your Order Details</h1>
+<h1>Ticket Details</h1>
 
 <p>Order time: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+<p>Buyer: <%= @ticket.user.full_name %></p>
 
 <h2>Information:</h2>
 <table>
@@ -11,11 +12,11 @@
   </tr>
   <tr>
     <th>Train Number:</th>
-    <td><%= @ticket.train.number %></td>
+    <td><%= link_to @ticket.train.number, admin_train_path(@ticket.train) %></td>
   </tr>
   <tr>
     <th>Route:</th>
-    <td><%= @ticket.train.route.name %></td>
+    <td><%= link_to @ticket.train.route.name, admin_route_path(@ticket.train.route) %></td>
   </tr>
   <tr>
     <th>Departing point:</th>
@@ -48,4 +49,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Back to search', search_path %>
+<%= link_to 'Back to tickets', admin_tickets_path %>

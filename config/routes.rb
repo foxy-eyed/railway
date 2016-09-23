@@ -1,21 +1,30 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  devise_for :users
 
-  get 'welcome/index'
+  root 'searches#show'
 
   resource :search, only: [:show, :create]
 
-  resources :railway_stations do
-    patch :update_within_route, on: :member
-  end
-
-  resources :routes
-
   resources :tickets, only: [:show, :create] do
-    post :buy, on: :collection
+    collection do
+      get :my
+      post :buy
+    end
   end
 
-  resources :trains do
-    resources :wagons, shallow: true
+  namespace :admin do
+    get 'dashboard/index'
+
+    resources :railway_stations do
+      patch :update_within_route, on: :member
+    end
+
+    resources :routes
+
+    resources :tickets, except: [:new, :create]
+
+    resources :trains do
+      resources :wagons, shallow: true
+    end
   end
 end
