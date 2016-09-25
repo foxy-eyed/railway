@@ -1,0 +1,8 @@
+ru:
+  activemodel:
+    attributes:
+      search:
+        start_station_id: "Начальная станция"
+        end_station_id: "Конечная станция"
+  errors:
+    format: "%{message}"

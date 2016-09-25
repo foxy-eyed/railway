@@ -3,12 +3,12 @@
 <%= form_for(@search, method: :post, url: search_path) do |f| %>
     <%= render 'common/errors', resource: @search %>
     <div class="field">
-      <%= label_tag 'Departing point' %>
+      <%= f.label :start_station_id %>
       <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
     </div>
 
     <div class="field">
-      <%= label_tag 'Destination point' %>
+      <%= f.label :end_station_id %>
       <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
     </div>
 

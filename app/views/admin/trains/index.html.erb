@@ -1,4 +1,4 @@
-<h1>Trains</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
   <thead>
@@ -17,6 +17,6 @@
 
 <br/>
 
-<%= link_to 'New Train', new_admin_train_path %><br/>
+<%= link_to t('common.add'), new_admin_train_path %><br/>
 
-<%= link_to 'Back', admin_dashboard_index_path %>
+<%= link_to t('common.back'), admin_dashboard_index_path %>

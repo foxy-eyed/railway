@@ -1,0 +1,20 @@
+ru:
+  common:
+    back: "Назад"
+    add: "Добавить"
+    show: "Посмотреть"
+    edit: "Редактировать"
+    destroy: "Удалить"
+    confirm: "Вы уверены?"
+  admin:
+    trains:
+      index:
+        title: "Поезда"
+      new:
+        title: "Новый поезд"
+      edit:
+        title: "Изменить поезд"
+      show:
+        title: "Поезд"
+      form:
+        submit: "%{action} поезд"
