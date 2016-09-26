@@ -1,4 +1,4 @@
-<h1>Routes</h1>
+<h1><%= t('.title') %></h1>
 <div class="row">
   <div class="col-sm-12">
     <%= link_to t('common.add'), new_admin_route_path,
@@ -8,7 +8,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Name</th>
+    <th><%= t('admin.routes.attributes.name') %></th>
     <th></th>
   </tr>
   </thead>

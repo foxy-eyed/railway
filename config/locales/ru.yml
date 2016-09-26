@@ -1,11 +1,31 @@
 ru:
+  hello: "Привет"
+
   common:
     back: "Назад"
     add: "Добавить"
     show: "Посмотреть"
     edit: "Редактировать"
     destroy: "Удалить"
+    update: "Обновить"
     confirm: "Вы уверены?"
+    empty: "Нет записей"
+    not_set:
+      f: "Не указана"
+      m: "Не указано"
+      many: "Не указаны"
+    count: "Кол-во"
+    sidebar:
+      routes: "Маршруты"
+      stations: "Станции"
+      trains: "Поезда"
+      tickets: "Билеты"
+    nav:
+      my_tickets: "Мои билеты"
+      admin: "Админ-панель"
+      log_in: "Вход"
+      log_out: "Выход"
+
   admin:
     trains:
       index:
@@ -13,9 +33,12 @@ ru:
       new:
         title: "Новый поезд"
       edit:
-        title: "Изменить поезд"
+        title: "Редактировать поезд"
       show:
         title: "Поезд"
+        add_wagon: "Добавить вагон"
+        wagons: "Вагоны"
+        places_count_by_type: "Количество мест по типу"
       form:
         submit: "%{action} поезд"
       attributes:
@@ -24,15 +47,62 @@ ru:
         current_station: "Текущая станция"
 
     railway_stations:
-          index:
-            title: "Станции"
-          new:
-            title: "Новая станция"
-          edit:
-            title: "Редактировать станцию"
-          show:
-            title: "Станция"
-          form:
-            submit: "%{action} станцию"
-          attributes:
-            title: "Название"
+      index:
+        title: "Станции"
+      new:
+        title: "Новая станция"
+      edit:
+        title: "Редактировать станцию"
+      show:
+        title: "Станция"
+      form:
+        submit: "%{action} станцию"
+      attributes:
+        title: "Название"
+        position: "Порядковый номер"
+        arrival_time: "Время прибытия"
+        departure_time: "Время отправления"
+        trains_on_station: "Поезда на станции"
+
+    routes:
+      index:
+        title: "Маршруты"
+      new:
+        title: "Новый маршрут"
+      edit:
+        title: "Редактировать маршрут"
+      show:
+        title: "Маршрут"
+      form:
+        submit: "%{action} маршрут"
+      attributes:
+        name: "Название"
+        stations: "Станции в маршруте"
+        trains: "Поезда на маршруте"
+
+    wagons:
+      new:
+        title: "Новый вагон"
+      edit:
+        title: "Редактировать вагон"
+      show:
+        title: "Вагон"
+        places: "Места"
+      form:
+        submit: "%{action} вагон"
+      attributes:
+        type: "Тип вагона"
+        place_type: "Тип места"
+        train: "Номер поезда"
+        number: "Номер вагона"
+
+    tickets:
+      index:
+        title: "Список купленных билетов"
+      attributes:
+        sn: "Серийный номер"
+        train: "Номер поезда"
+        route: "Маршрут"
+        start_station: "Начальная станция"
+        end_station: "Конечная станция"
+        buyer: "Покупатель"

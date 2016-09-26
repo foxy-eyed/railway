@@ -7,6 +7,6 @@
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit t('.submit', action: route.new_record? ? 'Создать' : 'Изменить') %>
     </div>
 <% end %>

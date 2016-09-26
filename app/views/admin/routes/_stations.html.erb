@@ -1,8 +1,8 @@
 <table>
   <thead>
   <tr>
-    <th>Station</th>
-    <th>Position</th>
+    <th><%= t('admin.railway_stations.attributes.title') %></th>
+    <th><%= t('admin.railway_stations.attributes.position') %></th>
   </tr>
   </thead>
   <tbody>
@@ -13,9 +13,11 @@
           <%= form_tag(update_within_route_admin_railway_station_path(station), method: :patch) do %>
               <%= hidden_field_tag :route_id, @route.id %>
               <%= number_field_tag :position, station.within_route(@route, :position) %>
-              <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time), placeholder: 'arrival time' %>
-              <%= time_field_tag :departure_time, station.within_route(@route, :departure_time), placeholder: 'departure time' %>
-              <%= submit_tag 'update' %>
+              <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time),
+                                 placeholder: t('admin.railway_stations.attributes.arrival_time') %>
+              <%= time_field_tag :departure_time, station.within_route(@route, :departure_time),
+                                 placeholder: t('admin.railway_stations.attributes.departure_time') %>
+              <%= submit_tag t('common.update'), class: 'btn btn-primary' %>
           <% end %>
         </td>
       </tr>
