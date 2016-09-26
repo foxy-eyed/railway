@@ -1,12 +1,17 @@
 <h1><%= t('.title') %></h1>
-
-<table>
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to t('common.add'), new_admin_train_path,
+                class: 'btn btn-primary btn-lg pull-right', role: 'button' %>
+  </div>
+</div>
+<table class="table table-striped">
   <thead>
   <tr>
-    <th>Number</th>
-    <th>Route</th>
-    <th>Current station</th>
-    <th colspan="3"></th>
+    <th><%= t('admin.trains.attributes.number') %></th>
+    <th><%= t('admin.trains.attributes.route') %></th>
+    <th><%= t('admin.trains.attributes.current_station') %></th>
+    <th></th>
   </tr>
   </thead>
 
@@ -14,9 +19,3 @@
   <%= render @trains %>
   </tbody>
 </table>
-
-<br/>
-
-<%= link_to t('common.add'), new_admin_train_path %><br/>
-
-<%= link_to t('common.back'), admin_dashboard_index_path %>

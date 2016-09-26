@@ -18,3 +18,21 @@ ru:
         title: "Поезд"
       form:
         submit: "%{action} поезд"
+      attributes:
+        number: "Номер"
+        route: "Маршрут"
+        current_station: "Текущая станция"
+
+    railway_stations:
+          index:
+            title: "Станции"
+          new:
+            title: "Новая станция"
+          edit:
+            title: "Редактировать станцию"
+          show:
+            title: "Станция"
+          form:
+            submit: "%{action} станцию"
+          attributes:
+            title: "Название"

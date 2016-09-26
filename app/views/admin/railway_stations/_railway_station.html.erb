@@ -1,6 +1,7 @@
 <tr>
   <td><%= railway_station.title %></td>
-  <td><%= link_to 'Show', admin_railway_station_path(railway_station) %></td>
-  <td><%= link_to 'Edit', edit_admin_railway_station_path(railway_station) %></td>
-  <td><%= link_to 'Destroy', admin_railway_station_path(railway_station), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <%= render 'common/button_column', links: {show: admin_railway_station_path(railway_station),
+                                             edit: edit_admin_railway_station_path(railway_station),
+                                             delete: admin_railway_station_path(railway_station)
+  } %>
 </tr>

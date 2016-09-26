@@ -14,7 +14,8 @@
         not set
     <% end %>
   </td>
-  <td><%= link_to t('common.show'), admin_train_path(train) %></td>
-  <td><%= link_to t('common.edit'), edit_admin_train_path(train) %></td>
-  <td><%= link_to t('common.destroy'), admin_train_path(train), method: :delete, data: {confirm: t('common.confirm')} %></td>
+  <%= render 'common/button_column', links: {show: admin_train_path(train),
+                                             edit: edit_admin_train_path(train),
+                                             delete: admin_train_path(train)
+  } %>
 </tr>
