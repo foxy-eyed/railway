@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 gem 'bootstrap-sass', '~>3.3'
+gem 'font-awesome-rails', '~>4.6'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
