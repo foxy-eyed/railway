@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-
-    <div class="navbar-header col-sm-3 col-md-2">
+  <div class="container">
+    <div class="navbar-header">
       <%= link_to root_path, class: 'navbar-brand' do %>
           <span class="logo">
             <%= fa_icon 'train' %>
@@ -26,5 +26,5 @@
           <li><%= link_to t('.log_in'), new_user_session_path, class: 'nav-item nav-link' %></li>
       <% end %>
     </ul>
-
+  </div>
 </nav>

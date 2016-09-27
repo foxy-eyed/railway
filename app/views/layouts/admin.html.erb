@@ -19,11 +19,15 @@
 <div class="container">
   <div class="row">
     <%= render 'common/sidebar' %>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <%= render 'common/flash' %>
-      <%= yield %>
+    <div class="col-sm-9 col-md-10">
+      <div class="main">
+        <%= render 'common/flash' %>
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>
+
+<%= render 'common/footer' %>
 </body>
 </html>

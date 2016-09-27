@@ -25,6 +25,7 @@ ru:
       admin: "Админ-панель"
       log_in: "Вход"
       log_out: "Выход"
+    error_msg: "Проверьте корректность заполненных данных:"
 
   admin:
     trains:
@@ -106,3 +107,27 @@ ru:
         start_station: "Начальная станция"
         end_station: "Конечная станция"
         buyer: "Покупатель"
+
+  searches:
+    show:
+      title: "Поиск билетов"
+      submit: "Искать!"
+      search_results: "Результаты поиска"
+      empty: "Ничего не найдено"
+      buy: "Купить"
+
+  users:
+    sign_in:
+      title: "Вход"
+
+  tickets:
+    my:
+      title: "Мои билеты"
+    attributes:
+      sn: "Серийный номер"
+      train: "Номер поезда"
+      route: "Маршрут"
+      start_station: "Начальная станция"
+      end_station: "Конечная станция"
+      arrival_time: "Время прибытия"
+      departure_time: "Время отправления"
