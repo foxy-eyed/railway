@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
     @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket, notice: 'Thank you for your order!'
+      redirect_to @ticket, notice: t('.notice')
     else
       render :buy
     end
@@ -23,7 +23,7 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to my_tickets_path, notice: 'Ticket was successfully deleted.'
+    redirect_to my_tickets_path, notice: t('.notice')
   end
 
   def my
@@ -34,7 +34,7 @@ class TicketsController < ApplicationController
 
   def set_ticket_and_check_owner
     @ticket = Ticket.find(params[:id])
-    redirect_to my_tickets_path, alert: 'Permission denied' unless @ticket.user == current_user
+    redirect_to my_tickets_path, alert: t('permission_denied') unless @ticket.user == current_user
   end
 
   def ticket_params

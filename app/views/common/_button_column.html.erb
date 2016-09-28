@@ -1,11 +1,18 @@
 <td class="button-column">
-  <%= link_to(links[:show], data: {toggle: 'tooltip', title: t('common.show')}) do %>
-      <%= fa_icon 'eye' %>
+  <% if links.key?(:show) %>
+    <%= link_to(links[:show], data: {toggle: 'tooltip', title: t('common.show')}) do %>
+        <%= fa_icon 'eye' %>
+    <% end %>
   <% end %>
-  <%= link_to(links[:edit], data: {toggle: 'tooltip', title: t('common.edit')}) do %>
-      <%= fa_icon 'pencil' %>
+
+  <% if links.key?(:edit) %>
+    <%= link_to(links[:edit], data: {toggle: 'tooltip', title: t('common.edit')}) do %>
+        <%= fa_icon 'pencil' %>
+    <% end %>
   <% end %>
-  <%= link_to(links[:delete], method: :delete, data: {toggle: 'tooltip', title: t('common.destroy'), confirm: t('common.confirm')}) do %>
-      <%= fa_icon 'remove' %>
+  <% if links.key?(:delete) %>
+    <%= link_to(links[:delete], method: :delete, data: {toggle: 'tooltip', title: t('common.destroy'), confirm: t('common.confirm')}) do %>
+        <%= fa_icon 'remove' %>
+    <% end %>
   <% end %>
 </td>

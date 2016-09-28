@@ -116,10 +116,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .button-column {
   width: 120px;
+  text-align: right;
 
   a {
     display: inline-block;
     width: 30px;
     text-align: center;
   }
+}
+
+.nav-inner {
+  margin: 30px 0;
 }

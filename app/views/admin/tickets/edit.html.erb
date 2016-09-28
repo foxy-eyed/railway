@@ -1,30 +1,39 @@
-<h1>Editing Ticket</h1>
+<h1><%= t('.title') %></h1>
 
-<div>
-  <%= render 'common/errors', resource: @ticket %>
-  <%= form_for [:admin, @ticket] do |f| %>
-      <div class="field">
-        <%= f.label :start_station_id %>
-        <%= f.collection_select :start_station_id, @ticket.train.route.railway_stations, :id, :title %>
-      </div>
+<%= render 'common/errors', resource: @ticket %>
 
-      <div class="field">
-        <%= f.label :end_station_id %>
-        <%= f.collection_select :end_station_id, @ticket.train.route.railway_stations, :id, :title %>
-      </div>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for [:admin, @ticket] do |f| %>
+        <div class="form-group">
+          <%= f.label :start_station %>
+          <%= f.collection_select :start_station_id, @ticket.train.route.railway_stations, :id, :title, {},
+                                  class: 'form-control' %>
+        </div>
 
-      <div class="field">
-        <%= f.label :passenger_name %>
-        <%= f.text_field :passenger_name %>
-      </div>
+        <div class="form-group">
+          <%= f.label :end_station %>
+          <%= f.collection_select :end_station_id, @ticket.train.route.railway_stations, :id, :title, {},
+                                  class: 'form-control'%>
+        </div>
 
-      <div class="field">
-        <%= f.label :passport_number %>
-        <%= f.text_field :passport_number %>
-      </div>
+        <div class="form-group">
+          <%= f.label :passenger_name %>
+          <%= f.text_field :passenger_name, class: 'form-control' %>
+        </div>
 
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-  <% end %>
+        <div class="form-group">
+          <%= f.label :passport_number %>
+          <%= f.text_field :passport_number, class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('.submit'), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
 </div>
+
+<p class="nav-inner">
+  <%= link_to t('common.back'), admin_tickets_path %>
+</p>

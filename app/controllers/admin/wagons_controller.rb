@@ -19,12 +19,12 @@ class Admin::WagonsController < Admin::BaseController
       @wagon = wagon_class.new(wagon_params(wagon_class))
       @wagon.train = @train
       if @wagon.save
-        redirect_to admin_train_path(@train), notice: 'Wagon was successfully created.'
+        redirect_to admin_train_path(@train), notice: t('.notice')
       else
         render :new
       end
     else
-      redirect_to new_admin_train_wagon_path(@train), alert: 'Unknown type of Wagon'
+      redirect_to new_admin_train_wagon_path(@train), alert: t('.alert')
     end
   end
 
@@ -33,7 +33,7 @@ class Admin::WagonsController < Admin::BaseController
 
   def update
     if @wagon.update(wagon_params(@wagon.class))
-      redirect_to admin_wagon_path(@wagon), notice: 'Wagon was successfully updated.'
+      redirect_to admin_wagon_path(@wagon), notice: t('.notice')
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::WagonsController < Admin::BaseController
   def destroy
     train = @wagon.train
     @wagon.destroy
-    redirect_to admin_train_path(train), notice: 'Wagon was successfully deleted.'
+    redirect_to admin_train_path(train), notice: t('.notice')
   end
 
   private

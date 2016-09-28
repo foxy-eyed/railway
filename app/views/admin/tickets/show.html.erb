@@ -1,32 +1,32 @@
-<h1>Ticket Details</h1>
+<h1><%= t('tickets.show.title') %></h1>
 
-<p>Order time: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
-<p>Buyer: <%= @ticket.user.full_name %></p>
+<p><%= t('tickets.attributes.order_time') %>: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+<p><%= t('tickets.attributes.buyer') %>: <%= @ticket.user.full_name %></p>
 
-<h2>Information:</h2>
-<table>
+<h2><%= t('tickets.show.information') %></h2>
+<table class="table">
   <tbody>
   <tr>
-    <th>Ticket Number:</th>
+    <th><%= t('tickets.attributes.sn') %></th>
     <td><%= @ticket.serial_number %></td>
   </tr>
   <tr>
-    <th>Train Number:</th>
+    <th><%= t('tickets.attributes.train') %></th>
     <td><%= link_to @ticket.train.number, admin_train_path(@ticket.train) %></td>
   </tr>
   <tr>
-    <th>Route:</th>
+    <th><%= t('tickets.attributes.route') %></th>
     <td><%= link_to @ticket.train.route.name, admin_route_path(@ticket.train.route) %></td>
   </tr>
   <tr>
-    <th>Departing point:</th>
+    <th><%= t('tickets.attributes.start_station') %></th>
     <td>
       <%= @ticket.start_station.title %>
       (at <%= @ticket.start_station.within_route(@ticket.train.route, :departure_time) %>)
     </td>
   </tr>
   <tr>
-    <th>Destination point:</th>
+    <th><%= t('tickets.attributes.end_station') %></th>
     <td>
       <%= @ticket.end_station.title %>
       (at <%= @ticket.end_station.within_route(@ticket.train.route, :arrival_time) %>)
@@ -35,18 +35,22 @@
   </tbody>
 </table>
 
-<h2>Passenger data:</h2>
-<table>
+<h2><%= t('tickets.show.passenger_data') %></h2>
+<table class="table">
   <tbody>
   <tr>
-    <th>Passenger name:</th>
+    <th><%= t('tickets.attributes.passenger_name') %></th>
     <td><%= @ticket.passenger_name %></td>
   </tr>
   <tr>
-    <th>Passport number:</th>
+    <th><%= t('tickets.attributes.passport_number') %></th>
     <td><%= @ticket.passport_number %></td>
   </tr>
   </tbody>
 </table>
 
-<%= link_to 'Back to tickets', admin_tickets_path %>
+<p class="nav-inner">
+  <%= link_to t('common.edit'), edit_admin_ticket_path(@ticket) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_tickets_path %>
+</p>

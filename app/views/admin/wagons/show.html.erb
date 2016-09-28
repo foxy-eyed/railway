@@ -20,5 +20,8 @@
   <%= render "places_#{@wagon.type.underscore}", wagon: @wagon %>
 </div>
 
-<%= link_to t('common.edit'), edit_admin_wagon_path(@wagon) %> |
-<%= link_to t('common.back'), admin_train_path(@wagon.train) %>
+<p class="nav-inner">
+  <%= link_to t('common.edit'), edit_admin_wagon_path(@wagon) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_train_path(@wagon.train) %>
+</p>

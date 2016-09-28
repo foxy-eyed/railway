@@ -20,5 +20,8 @@
   <% end %>
 </p>
 
-<%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to t('common.back'), admin_railway_stations_path %>
+<p class="nav-inner">
+  <%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_railway_stations_path %>
+</p>
