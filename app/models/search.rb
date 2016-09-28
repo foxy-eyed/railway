@@ -16,15 +16,15 @@ class Search
   end
 
   def run
-    if self.valid?
+    if valid?
       @result = Train.includes(route: :railway_stations).where(railway_stations: { id: start_station_id }) &
-          Train.includes(route: :railway_stations).where(railway_stations: { id: end_station_id })
+                Train.includes(route: :railway_stations).where(railway_stations: { id: end_station_id })
     end
   end
 
   private
 
   def stations_differ
-    errors.add(:base, 'Stations must be different') if start_station_id == end_station_id
+    errors.add(:base, 'Нужно выбрать разные станции') if start_station_id == end_station_id
   end
 end
