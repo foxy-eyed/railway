@@ -1,11 +1,11 @@
 <td class="button-column">
   <%= link_to(links[:show], data: {toggle: 'tooltip', title: t('common.show')}) do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
+      <%= fa_icon 'eye' %>
   <% end %>
   <%= link_to(links[:edit], data: {toggle: 'tooltip', title: t('common.edit')}) do %>
-      <span class="glyphicon glyphicon-pencil"></span>
+      <%= fa_icon 'pencil' %>
   <% end %>
   <%= link_to(links[:delete], method: :delete, data: {toggle: 'tooltip', title: t('common.destroy'), confirm: t('common.confirm')}) do %>
-      <span class="glyphicon glyphicon-remove"></span>
+      <%= fa_icon 'remove' %>
   <% end %>
 </td>

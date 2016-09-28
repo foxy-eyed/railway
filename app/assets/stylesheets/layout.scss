@@ -88,9 +88,20 @@ h1, h2, h3, h4, h5, h6 {
   > li > a {
     padding-right: 20px;
     padding-left: 20px;
+    color: #8da0aa;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: transparent;
+    }
+
+    i {
+      display: block;
+      float: left;
+      font-size: 16px;
+      text-align: center;
+      color: #0093d9;
+      width: 30px;
+      margin: 0 5px;
     }
   }
 }
