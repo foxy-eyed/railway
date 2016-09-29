@@ -1,11 +1,11 @@
-<h1>Route "<%= @route.name %>"</h1>
+<h1><%= t('.title') %> «<%= @route.name %>»</h1>
 
-<h2>Railway stations:</h2>
+<h2 class="sub-header"><%= t('admin.routes.attributes.stations') %></h2>
 <div>
   <%= render 'stations', stations: @route.railway_stations.ordered %>
 </div>
 
-<h2>Trains on Route:</h2>
+<h2 class="sub-header"><%= t('admin.routes.attributes.trains') %></h2>
 <div>
   <% if @route.trains.present? %>
       <ul>
@@ -16,9 +16,12 @@
         <% end %>
       </ul>
   <% else %>
-      no trains on route
+      <%= t('common.empty') %>
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_admin_route_path(@route) %> |
-<%= link_to 'Back', admin_routes_path %>
+<p class="nav-inner">
+  <%= link_to t('common.edit'), edit_admin_route_path(@route) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_routes_path %>
+</p>

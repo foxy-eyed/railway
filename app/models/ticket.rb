@@ -6,7 +6,7 @@ class Ticket < ApplicationRecord
 
   validates :serial_number, :passenger_name, :passport_number, presence: true
   validates :passenger_name, length: { minimum: 3, maximum: 50 }
-  validates :passport_number, format: {with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/}
+  validates :passport_number, format: { with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/ }
 
   before_validation :gen_serial_number, on: :create
 

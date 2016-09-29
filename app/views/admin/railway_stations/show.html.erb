@@ -1,12 +1,12 @@
-<h1>Railway Station</h1>
+<h1><%= t('.title') %></h1>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('admin.railway_stations.attributes.title') %></strong>
   <%= @railway_station.title %>
 </p>
 
 <p>
-  <strong>Trains on Station:</strong>
+  <strong><%= t('admin.railway_stations.attributes.trains_on_station') %></strong>
   <% if @railway_station.trains.present? %>
     <ul>
       <% @railway_station.trains.each do |train| %>
@@ -16,9 +16,12 @@
       <% end %>
     </ul>
   <% else %>
-    no trains on station
+    <%= t('common.empty') %>
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Back', admin_railway_stations_path %>
+<p class="nav-inner">
+  <%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_railway_stations_path %>
+</p>

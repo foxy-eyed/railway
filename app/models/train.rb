@@ -11,6 +11,6 @@ class Train < ApplicationRecord
   end
 
   def ordered_wagons
-    self.order_from_tail ? wagons.ordered.reverse_order : wagons.ordered
+    order_from_tail ? wagons.ordered.reverse_order : wagons.ordered
   end
 end

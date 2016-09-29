@@ -1,31 +1,31 @@
-<h1>Your Order Details</h1>
+<h1><%= t('.title') %></h1>
 
-<p>Order time: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+<p><%= t('tickets.attributes.order_time') %>: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
 
-<h2>Information:</h2>
-<table>
+<h2><%= t('.information') %></h2>
+<table class="table table-striped">
   <tbody>
   <tr>
-    <th>Ticket Number:</th>
+    <th><%= t('tickets.attributes.sn') %></th>
     <td><%= @ticket.serial_number %></td>
   </tr>
   <tr>
-    <th>Train Number:</th>
+    <th><%= t('tickets.attributes.train') %></th>
     <td><%= @ticket.train.number %></td>
   </tr>
   <tr>
-    <th>Route:</th>
+    <th><%= t('tickets.attributes.route') %></th>
     <td><%= @ticket.train.route.name %></td>
   </tr>
   <tr>
-    <th>Departing point:</th>
+    <th><%= t('tickets.attributes.start_station') %></th>
     <td>
       <%= @ticket.start_station.title %>
       (at <%= @ticket.start_station.within_route(@ticket.train.route, :departure_time) %>)
     </td>
   </tr>
   <tr>
-    <th>Destination point:</th>
+    <th><%= t('tickets.attributes.end_station') %></th>
     <td>
       <%= @ticket.end_station.title %>
       (at <%= @ticket.end_station.within_route(@ticket.train.route, :arrival_time) %>)
@@ -34,18 +34,20 @@
   </tbody>
 </table>
 
-<h2>Passenger data:</h2>
-<table>
+<h2><%= t('.passenger_data') %></h2>
+<table class="table table-striped">
   <tbody>
   <tr>
-    <th>Passenger name:</th>
+    <th><%= t('tickets.attributes.passenger_name') %></th>
     <td><%= @ticket.passenger_name %></td>
   </tr>
   <tr>
-    <th>Passport number:</th>
+    <th><%= t('tickets.attributes.passenger_name') %></th>
     <td><%= @ticket.passport_number %></td>
   </tr>
   </tbody>
 </table>
 
-<%= link_to 'Back to search', search_path %>
+<p class="nav-inner">
+  <%= link_to t('common.back'), search_path %>
+</p>

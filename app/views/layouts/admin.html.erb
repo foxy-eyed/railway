@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Railway</title>
+  <title>Dashboard | Railway</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,13 +17,17 @@
 <%= render 'common/nav' %>
 
 <div class="container">
-  <div class="main">
-    <%= render 'common/flash' %>
-    <%= yield %>
+  <div class="row">
+    <%= render 'common/sidebar' %>
+    <div class="col-sm-9 col-md-10">
+      <div class="main">
+        <%= render 'common/flash' %>
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </div>
 
 <%= render 'common/footer' %>
 </body>
 </html>
-

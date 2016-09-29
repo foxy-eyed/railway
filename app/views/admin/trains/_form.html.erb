@@ -1,27 +1,36 @@
-<%= form_for [:admin, train] do |f| %>
-    <%= render 'common/errors', resource: train %>
+<%= render 'common/errors', resource: train %>
 
-    <div class="field">
-      <%= f.label :number %>
-      <%= f.text_field :number %>
-    </div>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for [:admin, train] do |f| %>
+        <div class="form-group">
+          <%= f.label :number %>
+          <%= f.text_field :number, class: 'form-control' %>
+        </div>
 
-    <div class="field">
-      <%= f.label :current_station %>
-      <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
-    </div>
+        <div class="form-group">
+          <%= f.label :current_station %>
+          <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title, {},
+                                  class: 'form-control' %>
+        </div>
 
-    <div class="field">
-      <%= f.label :route %>
-      <%= f.collection_select :route_id, Route.all, :id, :name %>
-    </div>
+        <div class="form-group">
+          <%= f.label :route %>
+          <%= f.collection_select :route_id, Route.all, :id, :name, {},
+                                  class: 'form-control' %>
+        </div>
 
-    <div class="field">
-      <%= f.label :order_from_tail %>
-      <%= f.check_box :order_from_tail %>
-    </div>
+        <div class="checkbox">
+          <label>
+              <%= f.check_box :order_from_tail %>
+              <%= t('activerecord.attributes.train.order_from_tail') %>
+          </label>
+        </div>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+        <div class="actions">
+          <%= f.submit t('.submit', action: train.new_record? ? 'Создать' : 'Изменить'),
+                       class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>

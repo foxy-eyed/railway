@@ -1,13 +1,13 @@
-<h1>Tickets</h1>
+<h1><%= t('.title') %></h1>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
-    <th>Ticket number</th>
-    <th>Train</th>
-    <th>Route</th>
-    <th>Departing point</th>
-    <th>Destination point</th>
+    <th><%= t('tickets.attributes.sn') %></th>
+    <th><%= t('tickets.attributes.train') %></th>
+    <th><%= t('tickets.attributes.route') %></th>
+    <th><%= t('tickets.attributes.start_station') %></th>
+    <th><%= t('tickets.attributes.end_station') %></th>
     <th colspan="2"></th>
   </tr>
   </thead>
@@ -17,6 +17,6 @@
   </tbody>
 </table>
 
-<br/>
-
-<%= link_to 'Back', root_path %>
+<p class="nav-inner">
+  <%= link_to t('common.back'), root_path %>
+</p>

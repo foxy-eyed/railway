@@ -1,0 +1,178 @@
+ru:
+  hello: "Привет"
+  permission_denied: "Доступ запрещен!"
+
+  common:
+    back: "Назад"
+    add: "Добавить"
+    show: "Посмотреть"
+    edit: "Редактировать"
+    destroy: "Удалить"
+    update: "Обновить"
+    confirm: "Вы уверены?"
+    empty: "Нет записей"
+    not_set:
+      f: "Не указана"
+      m: "Не указан"
+      many: "Не указаны"
+    count: "Кол-во"
+    sidebar:
+      routes: "Маршруты"
+      stations: "Станции"
+      trains: "Поезда"
+      tickets: "Билеты"
+    nav:
+      my_tickets: "Мои билеты"
+      admin: "Админ-панель"
+      log_in: "Вход"
+      log_out: "Выход"
+    error_msg: "Проверьте корректность заполненных данных:"
+
+  admin:
+    trains:
+      index:
+        title: "Поезда"
+      new:
+        title: "Новый поезд"
+      edit:
+        title: "Редактировать поезд"
+      show:
+        title: "Поезд"
+        add_wagon: "Добавить вагон"
+        wagons: "Вагоны"
+        places_count_by_type: "Количество мест по типу"
+      create:
+        notice: "Поезд успешно добавлен!"
+      update:
+        notice: "Поезд успешно обновлен!"
+      destroy:
+        notice: "Поезд удален."
+      form:
+        submit: "%{action} поезд"
+      attributes:
+        number: "Номер"
+        route: "Маршрут"
+        current_station: "Текущая станция"
+
+    railway_stations:
+      index:
+        title: "Станции"
+      new:
+        title: "Новая станция"
+      edit:
+        title: "Редактировать станцию"
+      show:
+        title: "Станция"
+      create:
+        notice: "Станция успешно добавлена!"
+      update:
+        notice: "Станция успешно обновлена!"
+      destroy:
+        notice: "Станция удалена."
+      update_within_route:
+        notice: "Станция в маршруте успешно обновлена!"
+        alert: "Станция в маршруте не обновлена, возникли ошибки!"
+      form:
+        submit: "%{action} станцию"
+      attributes:
+        title: "Название"
+        position: "Порядковый номер"
+        arrival_time: "Время прибытия"
+        departure_time: "Время отправления"
+        trains_on_station: "Поезда на станции"
+
+    routes:
+      index:
+        title: "Маршруты"
+      new:
+        title: "Новый маршрут"
+      edit:
+        title: "Редактировать маршрут"
+      show:
+        title: "Маршрут"
+      create:
+        notice: "Маршрут успешно добавлен!"
+      update:
+        notice: "Маршрут успешно обновлен!"
+      destroy:
+        notice: "Маршрут удален."
+      form:
+        submit: "%{action} маршрут"
+      attributes:
+        name: "Название"
+        stations: "Станции в маршруте"
+        trains: "Поезда на маршруте"
+
+    wagons:
+      new:
+        title: "Новый вагон"
+      edit:
+        title: "Редактировать вагон"
+      show:
+        title: "Вагон"
+        places: "Места"
+      create:
+        notice: "Вагон успешно добавлен!"
+        alert: "Вагон не создан: неизвестный тип!"
+      update:
+        notice: "Вагон успешно обновлен!"
+      destroy:
+        notice: "Вагон удален."
+      form:
+        submit: "%{action} вагон"
+      attributes:
+        type: "Тип вагона"
+        place_type: "Тип места"
+        train: "Номер поезда"
+        number: "Номер вагона"
+        places: "Места"
+
+    tickets:
+      index:
+        title: "Список купленных билетов"
+      edit:
+        title: "Редактировать билет"
+        submit: "Сохранить"
+      update:
+        notice: "Билет отредактирован!"
+      destroy:
+        notice: "Билет удален."
+
+  searches:
+    show:
+      title: "Поиск билетов"
+      submit: "Искать!"
+      search_results: "Результаты поиска"
+      empty: "Ничего не найдено"
+      buy: "Купить"
+
+  users:
+    sign_in:
+      title: "Вход"
+
+  tickets:
+    buy:
+      title: "Купить билет"
+      buy: "Купить"
+    show:
+      title: "Детали заказа"
+      information: "Информация"
+      passenger_data: "Данные пассажира"
+    create:
+      notice: "Спасибо за Ваш заказ!"
+    destroy:
+      notice: "Заказ удален."
+    my:
+      title: "Мои билеты"
+    attributes:
+      sn: "Серийный номер"
+      train: "Номер поезда"
+      route: "Маршрут"
+      start_station: "Начальная станция"
+      end_station: "Конечная станция"
+      arrival_time: "Время прибытия"
+      departure_time: "Время отправления"
+      buyer: "Покупатель"
+      passenger_name: "ФИО пассажира"
+      passport_number: "Номер паспорта"
+      order_time: "Время заказа"

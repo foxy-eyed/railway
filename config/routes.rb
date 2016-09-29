@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resource :search, only: [:show, :create]
 
-  resources :tickets, only: [:show, :create] do
+  resources :tickets, only: [:show, :create, :destroy] do
     collection do
       get :my
       post :buy
@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'dashboard/index'
-
     resources :railway_stations do
       patch :update_within_route, on: :member
     end

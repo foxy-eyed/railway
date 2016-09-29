@@ -1,7 +1,7 @@
 class Wagon < ApplicationRecord
-  TYPES = { CoupeWagon: 'Coupe', EconomyWagon: 'Economy', LuxWagon: 'Lux', SittingWagon: 'Sitting' }
+  TYPES = { CoupeWagon: 'Coupe', EconomyWagon: 'Economy', LuxWagon: 'Lux', SittingWagon: 'Sitting' }.freeze
   PLACE_TYPES = { bottom_places: 'Bottom', top_places: 'Top', side_bottom_places: 'Side bottom',
-                  side_top_places: 'Side top', seats: 'Seats' }
+                  side_top_places: 'Side top', seats: 'Seats' }.freeze
 
   belongs_to :train
 

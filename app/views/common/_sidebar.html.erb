@@ -1,0 +1,27 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <li>
+      <%= link_to admin_routes_path do %>
+          <%= fa_icon 'map-signs' %>
+          <span><%= t('.routes') %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_railway_stations_path do %>
+          <%= fa_icon 'map-marker' %>
+          <span><%= t('.stations') %></span>
+      <% end %>
+    <li>
+      <%= link_to admin_trains_path do %>
+          <%= fa_icon 'train' %>
+          <span><%= t('.trains') %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_tickets_path do %>
+          <%= fa_icon 'ticket' %>
+          <span><%= t('.tickets') %></span>
+      <% end %>
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,9 @@
-<h1>Editing Train</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', train: @train %>
 
-<%= link_to 'Show', @train %> |
-<%= link_to 'Back', admin_trains_path %>
+<p class="nav-inner">
+  <%= link_to t('common.show'), admin_train_path(@train) %>
+  <span> | </span>
+  <%= link_to t('common.back'), admin_trains_path %>
+</p>
