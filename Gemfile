@@ -30,6 +30,8 @@ gem 'font-awesome-rails', '~>4.6'
 
 gem 'rails_12factor'
 
+gem 'postmark-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
