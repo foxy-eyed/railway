@@ -7,7 +7,7 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true
 
-  scope :ordered, -> { joins(:railway_stations_routes).uniq.order('railway_stations_routes.position') }
+  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).uniq.order('railway_stations_routes.position') }
   scope :ordered_by_title, -> { order(:title) }
 
   def within_route(route, attribute)
