@@ -6,8 +6,8 @@ class TicketsMailer < ApplicationMailer
   end
 
   def cancel_ticket(ticket)
-    @serial_number = ticket[:serial_number]
-    @user = ticket[:user]
+    @serial_number = ticket.serial_number
+    @user = ticket.user
     mail(to: @user.email, subject: t('tickets_mailer.cancel_ticket.subject'))
   end
 end

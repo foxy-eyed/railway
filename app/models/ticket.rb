@@ -10,7 +10,6 @@ class Ticket < ApplicationRecord
 
   before_validation :gen_serial_number, on: :create
   after_create :send_buy_notification
-  before_destroy :store_ticket_data
   after_destroy :send_cancel_notification
 
   private
@@ -23,11 +22,7 @@ class Ticket < ApplicationRecord
     TicketsMailer.buy_ticket(self).deliver_now
   end
 
-  def store_ticket_data
-    @ticket_data = {serial_number: serial_number, user: user}
-  end
-
   def send_cancel_notification
-    TicketsMailer.cancel_ticket(@ticket_data).deliver_now
+    TicketsMailer.cancel_ticket(self).deliver_now
   end
 end
