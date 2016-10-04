@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-
+ruby '2.2.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgreSQL as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -27,6 +27,10 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~>3.3'
 gem 'font-awesome-rails', '~>4.6'
+
+gem 'rails_12factor'
+
+gem 'postmark-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

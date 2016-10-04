@@ -9,10 +9,20 @@ class Ticket < ApplicationRecord
   validates :passport_number, format: { with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/ }
 
   before_validation :gen_serial_number, on: :create
+  after_create :send_buy_notification
+  after_destroy :send_cancel_notification
 
   private
 
   def gen_serial_number
     self.serial_number = rand(9**10).to_s
+  end
+
+  def send_buy_notification
+    TicketsMailer.buy_ticket(self).deliver_now
+  end
+
+  def send_cancel_notification
+    TicketsMailer.cancel_ticket(self).deliver_now
   end
 end

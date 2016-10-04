@@ -176,3 +176,20 @@ ru:
       passenger_name: "ФИО пассажира"
       passport_number: "Номер паспорта"
       order_time: "Время заказа"
+
+  tickets_mailer:
+    buy_ticket:
+      subject: "Информация о купленном билете"
+      greeting: "Здравствуйте, %{recipient}!"
+      thanks: "Спасибо за Ваш заказ!"
+      order_details: "Детали Вашего заказа:"
+      information: "Информация о билете"
+      passenger_data: "Данные пассажира"
+      view: "Посмотреть заказ"
+      view_all: "Все мои заказы"
+
+    cancel_ticket:
+      subject: "Отмена заказа"
+      greeting: "Здравствуйте, %{recipient}!"
+      message: "Вы только что отменили бронь билета с номером %{serial_number}."
+      come_back: "Нам жаль :( Ждем Вас снова!"

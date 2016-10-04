@@ -1,0 +1,43 @@
+<h2><%= t('.greeting', recipient: @user.full_name) %></h2>
+
+<p><%= t('.thanks') %></p>
+
+<h3><%= t('.order_details') %></h3>
+
+<p><%= t('tickets.attributes.order_time') %>: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+
+<h4><%= t('.information') %></h4>
+
+<ul>
+  <li>
+    <strong><%= t('tickets.attributes.sn') %></strong>: <%= @ticket.serial_number %>
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.train') %></strong>: <%= @ticket.train.number %>
+  </li>
+
+  <li>
+    <strong><%= t('tickets.attributes.route') %></strong>: <%= @ticket.train.route.name %>
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.start_station') %></strong>: <%= @ticket.start_station.title %>
+    (<%= @ticket.start_station.within_route(@ticket.train.route, :departure_time) %>)
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.end_station') %></strong>: <%= @ticket.end_station.title %>
+    (<%= @ticket.end_station.within_route(@ticket.train.route, :arrival_time) %>)
+  </li>
+</ul>
+
+<h4><%= t('.passenger_data') %></h4>
+
+<ul>
+  <li>
+    <strong><%= t('tickets.attributes.passenger_name') %></strong>: <%= @ticket.passenger_name %>
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.passport_number') %></strong>: <%= @ticket.passport_number %>
+  </li>
+</ul>
+
+<p><%= link_to t('.view'), @ticket %> | <%= link_to t('.view_all'), my_tickets_url %></p>
