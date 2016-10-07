@@ -118,15 +118,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button-column {
-  width: 120px;
   text-align: right;
-  vertical-align: middle;
 
   a {
     display: inline-block;
     width: 30px;
     text-align: center;
   }
+}
+
+td.button-column {
+  width: 120px;
+  vertical-align: middle;
 }
 
 .nav-inner {
@@ -144,6 +147,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.railway-stations-grid .pseudo-link {
-  line-height: 31px;
+.route-stations-grid, .railway-stations-grid {
+  tbody > tr > td {
+    vertical-align: middle;
+
+    &.wide {
+      width: 80%;
+    }
+  }
+
+  .pseudo-link {
+    line-height: 31px;
+    margin-left: 12px;
+  }
 }

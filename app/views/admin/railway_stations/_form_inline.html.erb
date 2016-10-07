@@ -5,10 +5,10 @@
       </div>
 
       <%= button_tag class: 'btn btn-primary js-btn-submit',
-                     data: {toggle: 'tooltip', title: t('.submit'), ajax_path: admin_railway_station_path(railway_station) } do %>
+                     data: {toggle: 'tooltip', title: t('common.update'), ajax_path: admin_railway_station_path(railway_station) } do %>
           <%= (fa_icon 'check') %>
       <% end %>
-      <%= button_tag class: 'btn btn-default js-btn-cancel', data: {toggle: 'tooltip', title: t('.cancel')} do %>
+      <%= button_tag class: 'btn btn-default js-btn-cancel', data: {toggle: 'tooltip', title: t('common.cancel')} do %>
           <%= (fa_icon 'ban') %>
       <% end %>
   <% end %>

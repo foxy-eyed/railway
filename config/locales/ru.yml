@@ -9,6 +9,7 @@ ru:
     edit: "Редактировать"
     destroy: "Удалить"
     update: "Обновить"
+    cancel: "Отмена"
     confirm: "Вы уверены?"
     empty: "Нет записей"
     not_set:
@@ -71,9 +72,6 @@ ru:
       update_within_route:
         notice: "Станция в маршруте успешно обновлена!"
         alert: "Станция в маршруте не обновлена, возникли ошибки!"
-      form_inline:
-        submit: "Изменить станцию"
-        cancel: "Отмена"
       attributes:
         title: "Название"
         position: "Порядковый номер"
