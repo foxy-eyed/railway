@@ -1,6 +1,21 @@
 <h1><%= t('.title') %></h1>
 
-<%= render 'form', railway_station: @railway_station %>
+<%= render 'common/errors', resource: @railway_station %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for [:admin, @railway_station] do |f| %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('.submit'), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>
 
 <p class="nav-inner">
   <%= link_to t('common.back'), admin_railway_stations_path %>

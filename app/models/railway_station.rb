@@ -17,7 +17,13 @@ class RailwayStation < ApplicationRecord
   def update_within_route(route, position, arrival_time, departure_time)
     route_connection = get_route_connection(route)
     if route_connection
-      route_connection.update(position: position, arrival_time: arrival_time, departure_time: departure_time)
+      if route_connection.update(position: position, arrival_time: arrival_time, departure_time: departure_time)
+        {success: true, record: route_connection }
+      else
+        {success: false, errors: route_connection.errors }
+      end
+    else
+      {success: false, errors: { base: 'Станция в маршруте не найдена' } }
     end
   end
 

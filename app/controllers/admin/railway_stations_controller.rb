@@ -27,9 +27,9 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def update
     if @railway_station.update(railway_station_params)
-      redirect_to admin_railway_station_path(@railway_station), notice: t('.notice')
+      render json: @railway_station, status: :ok
     else
-      render :edit
+      render json: @railway_station.errors, status: :unprocessable_entity
     end
   end
 
@@ -40,10 +40,11 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def update_within_route
     @route = Route.find(params[:route_id])
-    if @railway_station.update_within_route(@route, params[:position], params[:arrival_time], params[:departure_time])
-      redirect_to admin_route_path(@route), notice: t('.notice')
+    result = @railway_station.update_within_route(@route, params[:position], params[:arrival_time], params[:departure_time])
+    if result[:success]
+      render json: result[:record], status: :ok
     else
-      redirect_to admin_route_path(@route), alert: t('.alert')
+      render json: result[:errors], status: :unprocessable_entity
     end
   end
 

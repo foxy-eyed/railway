@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :railway_stations do
-      patch :update_within_route, on: :member
+      put :update_within_route, on: :member
     end
 
     resources :routes

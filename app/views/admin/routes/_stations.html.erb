@@ -1,4 +1,4 @@
-<table class="table table-condensed">
+<table class="table table-condensed route-stations-grid">
   <thead>
   <tr>
     <th><%= t('admin.railway_stations.attributes.title') %></th>
@@ -7,31 +7,61 @@
   </thead>
   <tbody>
   <% stations.each do |station| %>
-      <tr>
+      <tr data-pk="<%= station.id %>">
         <td><%= link_to station.title, admin_railway_station_path(station) %></td>
-        <td>
-          <%= form_tag(update_within_route_admin_railway_station_path(station), method: :patch) do %>
-            <%= hidden_field_tag :route_id, @route.id %>
-            <div class="row">
-              <div class="col-sm-3">
-                <%= number_field_tag :position, station.within_route(@route, :position),
-                                     class: 'form-control' %>
-              </div>
-              <div class="col-sm-3">
-                <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time),
-                                   placeholder: t('admin.railway_stations.attributes.arrival_time'),
-                                   class: 'form-control' %>
-              </div>
-              <div class="col-sm-3">
-                <%= time_field_tag :departure_time, station.within_route(@route, :departure_time),
-                                   placeholder: t('admin.railway_stations.attributes.departure_time'),
-                                   class: 'form-control' %>
-              </div>
-              <div class="col-sm-3">
-                <%= submit_tag t('common.update'), class: 'btn btn-primary btn-sm' %>
-              </div>
+        <td class="wide">
+          <div class="row content-container js-content-<%= station.id %>">
+            <div class="col-sm-3">
+              <span class="pseudo-link">
+                <%= station.within_route(@route, :position) %>
+              </span>
             </div>
-          <% end %>
+            <div class="col-sm-3">
+              <span class="pseudo-link">
+                <%= station.within_route(@route, :arrival_time) %>
+              </span>
+            </div>
+            <div class="col-sm-3">
+              <span class="pseudo-link">
+                <%= station.within_route(@route, :departure_time) %>
+              </span>
+            </div>
+            <div class="col-sm-3 button-column">
+              <%= link_to('#', data: {toggle: 'tooltip', title: t('common.edit')}) do %>
+                  <%= fa_icon 'pencil' %>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-container js-form-<%= station.id %> hidden">
+            <%= form_tag(update_within_route_admin_railway_station_path(station), method: :put) do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <div class="row">
+                <div class="col-sm-3">
+                  <%= number_field_tag :position, station.within_route(@route, :position),
+                                       class: 'form-control' %>
+                </div>
+                <div class="col-sm-3">
+                  <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time),
+                                     placeholder: t('admin.railway_stations.attributes.arrival_time'),
+                                     class: 'form-control' %>
+                </div>
+                <div class="col-sm-3">
+                  <%= time_field_tag :departure_time, station.within_route(@route, :departure_time),
+                                     placeholder: t('admin.railway_stations.attributes.departure_time'),
+                                     class: 'form-control' %>
+                </div>
+                <div class="col-sm-3 button-column">
+                  <%= button_tag class: 'btn btn-primary js-btn-submit',
+                                 data: {toggle: 'tooltip', title: t('common.update'), ajax_path: update_within_route_admin_railway_station_path(station) } do %>
+                      <%= (fa_icon 'check') %>
+                  <% end %>
+                  <%= button_tag class: 'btn btn-default js-btn-cancel', data: {toggle: 'tooltip', title: t('common.cancel')} do %>
+                      <%= (fa_icon 'ban') %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </td>
       </tr>
   <% end %>

@@ -1,0 +1,15 @@
+<div class="form-container js-container-<%= railway_station.id %> hidden">
+  <%= form_for [:admin, railway_station], { html: { class: 'form-inline'} } do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, class: 'form-control', id: "title_#{railway_station.id}" %>
+      </div>
+
+      <%= button_tag class: 'btn btn-primary js-btn-submit',
+                     data: {toggle: 'tooltip', title: t('common.update'), ajax_path: admin_railway_station_path(railway_station) } do %>
+          <%= (fa_icon 'check') %>
+      <% end %>
+      <%= button_tag class: 'btn btn-default js-btn-cancel', data: {toggle: 'tooltip', title: t('common.cancel')} do %>
+          <%= (fa_icon 'ban') %>
+      <% end %>
+  <% end %>
+</div>
