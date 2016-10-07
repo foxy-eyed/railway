@@ -1,7 +1,11 @@
-<tr>
-  <td><%= railway_station.title %></td>
+<tr data-pk="<%= railway_station.id %>">
+  <td>
+    <span class="pseudo-link js-trigger-<%= railway_station.id %>">
+      <%= railway_station.title %>
+    </span>
+    <%= render 'form_inline', railway_station: railway_station %>
+  </td>
   <%= render 'common/button_column', links: {show: admin_railway_station_path(railway_station),
-                                             edit: edit_admin_railway_station_path(railway_station),
                                              delete: admin_railway_station_path(railway_station)
   } %>
 </tr>

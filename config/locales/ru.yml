@@ -59,21 +59,21 @@ ru:
         title: "Станции"
       new:
         title: "Новая станция"
+        submit: "Создать станцию"
       edit:
         title: "Редактировать станцию"
       show:
         title: "Станция"
       create:
         notice: "Станция успешно добавлена!"
-      update:
-        notice: "Станция успешно обновлена!"
       destroy:
         notice: "Станция удалена."
       update_within_route:
         notice: "Станция в маршруте успешно обновлена!"
         alert: "Станция в маршруте не обновлена, возникли ошибки!"
-      form:
-        submit: "%{action} станцию"
+      form_inline:
+        submit: "Изменить станцию"
+        cancel: "Отмена"
       attributes:
         title: "Название"
         position: "Порядковый номер"

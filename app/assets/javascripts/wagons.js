@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
     var $wagon_type = $('#wagon_type'),
         $wagon_place = $('.wagon-place');
 
